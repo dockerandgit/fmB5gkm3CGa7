@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+    <Name>Firefox SyncStorage</Name>
+    <Repository>mozilla/syncstorage-rs:0.13.6</Repository>
+    <Registry>https://index.docker.io/v1/</Registry>
+    <Network>bridge</Network>
+    <MyIP></MyIP>
+    <Privileged>false</Privileged>
+    <Support></Support>
+    <Overview>A Firefox SyncStorage server.</Overview>
+    <Version></Version>
+    <ChangeLog></ChangeLog>
+    <Maintainer>Your Name</Maintainer>
+    <Project></Project>
+    <Official>false</Official>
+    <TemplateURL></TemplateURL>
+    <WebUI></WebUI>
+
+    <Environment>
+        <Variable>
+            <Name>SYNC_HOST</Name>
+            <Default>0.0.0.0</Default>
+        </Variable>
+        <Variable>
+            <Name>SYNC_HUMAN_LOGS</Name>
+            <Default>1</Default>
+        </Variable>
+        <Variable>
+            <Name>MARIADB_USER</Name>
+            <Default>syncstorage</Default>
+            <Description>Database username for SyncStorage.</Description>
+        </Variable>
+        <Variable>
+            <Name>MARIADB_PASSWORD</Name>
+            <Default>syncstorage</Default>
+            <Description>Database password for SyncStorage.</Description>
+        </Variable>
+        <Variable>
+            <Name>SYNC_MASTER_SECRET</Name>
+            <Default>REPLACE</Default>
+            <Description>Master secret for sync storage.</Description>
+        </Variable>
+        <Variable>
+            <Name>SYNC_SYNCSTORAGE__DATABASE_URL</Name>
+            <Default>mysql://${MARIADB_USER}:${MARIADB_PASSWORD}@syncstorage_db:3306/syncstorage</Default>
+            <Description>Database URL for sync storage.</Description>
+        </Variable>
+        <Variable>
+            <Name>SYNC_TOKENSERVER__ENABLED</Name>
+            <Default>true</Default>
+        </Variable>
+        <Variable>
+            <Name>SYNC_TOKENSERVER__RUN_MIGRATIONS</Name>
+            <Default>true</Default>
+        </Variable>
+        <Variable>
+            <Name>SYNC_TOKENSERVER__NODE_TYPE</Name>
+            <Default>mysql</Default>
+        </Variable>
+        <Variable>
+            <Name>SYNC_TOKENSERVER__DATABASE_URL</Name>
+            <Default>mysql://${MARIADB_USER}:${MARIADB_PASSWORD}@tokenserver_db:3306/tokenserver</Default>
+            <Description>Database URL for token server.</Description>
+        </Variable>
+        <Variable>
+            <Name>SYNC_TOKENSERVER__FXA_EMAIL_DOMAIN</Name>
+            <Default>api.accounts.firefox.com</Default>
+        </Variable>
+        <Variable>
+            <Name>SYNC_TOKENSERVER__FXA_OAUTH_SERVER_URL</Name>
+            <Default>https://oauth.accounts.firefox.com/v1</Default>
+        </Variable>
+        <Variable>
+            <Name>SYNC_TOKENSERVER__FXA_METRICS_HASH_SECRET</Name>
+            <Default>REPLACE</Default>
+            <Description>Metrics hash secret for the token server.</Description>
+        </Variable>
+        <Variable>
+            <Name>SYNC_TOKENSERVER__ADDITIONAL_BLOCKING_THREADS_FOR_FXA_REQUESTS</Name>
+            <Default>2</Default>
+        </Variable>
+        <Variable>
+            <Name>RUST_LOG</Name>
+            <Default>info</Default>
+        </Variable>
+        <Variable>
+            <Name>DOMAIN</Name>
+            <Default>https://REPLACE</Default>
+            <Description>Domain for the application.</Description>
+        </Variable>
+    </Environment>
+
+    <Port>
+        <ContainerPort>8000</ContainerPort>
+        <HostPort>5000</HostPort>
+    </Port>
+
+    <Volume>
+        <HostPath></HostPath>
+        <ContainerPath></ContainerPath>
+        <Description></Description>
+    </Volume>
+
+    <Banner></Banner>
+</Container>
